@@ -14,6 +14,14 @@ const theme = createTheme({
 		fontSize: 16,
 	  },
 	},
+	palette: {
+		primary: {
+		  light: 'hsl(26, 100%, 55%)',
+		  main: 'hsl(26, 100%, 55%)',
+		  dark: 'hsl(26, 100%, 55%)',
+		  contrastText: '#fff',
+		},
+	},
   });
 
 export const Global = createGlobalStyle`

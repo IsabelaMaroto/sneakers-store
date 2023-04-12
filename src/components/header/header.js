@@ -15,57 +15,128 @@ import Logo from "../../images/logo.svg";
 import styled from "@emotion/styled";
 import MenuImg from "../../images/icon-menu.svg";
 import Car from "../../images/icon-cart.svg";
+import CloseIcon from "../../images/icon-close.svg";
+import Badge from "@mui/material/Badge";
+import Divider from '@mui/material/Divider';
 
 const pages = ["Collections", "Men", "Women", "About", "Contact"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const HeaderBar = styled(AppBar)`
   background-color: white;
+  box-shadow: unset;
+
+  .css-19r6kue-MuiContainer-root{
+    padding: 0 16px;
+  }
+  .css-1l7f38q-MuiButtonBase-root-MuiButton-root{
+    min-width: unset;
+  }
+  .css-1msjbys-MuiButtonBase-root-MuiButton-root{
+    border-bottom: 5px solid #fff;
+    background-color: unset;
+    border-radius: unset;
+    min-height: 100%;
+    margin: unset;
+    padding: 0 10px 30px;
+  }
+  .css-1msjbys-MuiButtonBase-root-MuiButton-root:hover{
+    border-bottom: 5px solid hsl(26, 100%, 55%);
+    background-color: unset;
+    border-radius: unset;
+    min-height: 100%;
+    margin: unset;
+    padding: 0 10px 30px;
+    color: hsl(220, 13%, 13%);
+  }
+  .css-1t6c9ts{
+    min-height: 100%;
+    padding: 30px 0 0;
+  }
+  .css-8je8zh-MuiTouchRipple-root{
+    min-height: 100%;
+  }
 `;
 const SetButton = styled(Button)`
   color: hsl(219, 9%, 45%);
 `;
 const MenuStyled = styled(Menu)`
   display: flex;
-  position: unset;
+  position: absolute;
   margin: 0;
-
+ 
   .MuiMenu-paper {
-    position: absolute;
-    display: flex;
-    top: unset;
-    left: unset;
     width: 70%;
     height: 100%;
     box-shadow: unset;
-    background-color: purple;
     border-radius: 0;
     top: 0 !important;
     left: 0 !important;
     padding: 0;
     margin: 0;
+   
   }
-  ul{
-    width: 100%
+  ul {
+    width: 70%;
+    height: 90%;
+    background-color: white;
   }
-  .MuiBackdrop-root{
+  .css-5mgas3-MuiTypography-root {
+    font-weight: 700;
+  }
+  .MuiBackdrop-root {
+    display: flex;
     position: unset;
     padding: 0;
     margin: 0;
-    background-color: red;
-    max-width: unset;
-    max-height: unset;
+    max-width: 100%;
+    max-height: 100%;
   }
-  .css-g3hgs1-MuiBackdrop-root-MuiModal-backdrop{
+  .css-g3hgs1-MuiBackdrop-root-MuiModal-backdrop {
     position: unset;
     padding: 0;
     margin: 0;
   }
-  .css-1ka5eyc-MuiPaper-root-MuiMenu-paper-MuiPopover-paper{
-    max-width: unset;
-    min-width: unset;
+  .css-1ka5eyc-MuiPaper-root-MuiMenu-paper-MuiPopover-paper {
+    max-width: 70%;
+    min-width: 70%;
+    max-height: 100%;
   }
 `;
+const XIcon = styled("img")`
+  padding: 16px;
+`;
+const CardStyle = styled(Menu)`
+  .MuiMenu-paper {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    right: unset !important;
+
+    @media (min-width: 500px) {
+      left: unset !important;
+      right: 10px !important;
+      transform: unset !important;
+    }
+  }
+
+  .css-1ka5eyc-MuiPaper-root-MuiMenu-paper-MuiPopover-paper {
+    max-width: none;
+    max-height: none;
+    width: 90%;
+
+    @media (min-width: 500px) {
+      width: 250px;
+      height: auto;
+    }
+  }
+`;
+const BadgeCar = styled(Badge)`
+ opacity: 1;
+`
+
 export function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -81,7 +152,7 @@ export function Header() {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
+  const handleCloseCarMenu = () => {
     setAnchorElUser(null);
   };
 
@@ -89,32 +160,34 @@ export function Header() {
     <HeaderBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Box sx={{ display: { xs: "none", md: "flex" }, mr: 10 }}>
-            <img src={Logo} alt="logo Sneakers" />
-          </Box>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              letterSpacing: ".3rem",
-              textDecoration: "none",
-            }}
-          ></Typography>
+          <Box sx={{display: "flex"}}>
+            <Box sx={{ display: { xs: "none", md: "flex" }}}>
+              <img src={Logo} alt="logo Sneakers" style={{marginBottom: '10px', paddingRight: '20px'}}/>
+            </Box>
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="/"
+              sx={{
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                letterSpacing: ".3rem",
+                textDecoration: "none",
+              }}
+            ></Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <SetButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-            >
-              <img src={MenuImg} alt="Menu icon" />
-            </SetButton>
+            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" }, m: '0px' }}>
+              <SetButton
+                size="large"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+              >
+                <img src={MenuImg} alt="Menu icon" style={{ paddingRight: '20px'}}/>
+              </SetButton>
+          </Box>
+          
             <MenuStyled
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -131,16 +204,22 @@ export function Header() {
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: "block", md: "none" },
+                m: '0px',
               }}
             >
+              <XIcon
+                src={CloseIcon}
+                alt="Close icon"
+                onClick={handleCloseNavMenu}
+              />
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
             </MenuStyled>
           </Box>
-          <Box sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}>
+          <Box sx={{ display: { xs: "flex", md: "none" }}}>
             <img src={Logo} alt="logo Sneakers" />
           </Box>
           <Typography
@@ -168,21 +247,23 @@ export function Header() {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0, display: "flex" }}>
+          <Box sx={{ flexGrow: 0, display: "flex"}}>
             <Tooltip title="Open settings">
               <Box
                 sx={{
-                  mr: 5,
+                  mr: 3,
                   display: "flex",
                   alignItems: "center",
                   cursor: "pointer",
                 }}
                 onClick={handleOpenUserMenu}
               >
-                <img src={Car} alt="Shopping Car" />
+                <BadgeCar badgeContent={0} color="primary" showZero>
+                  <img src={Car} alt="Shopping Car" />
+                </BadgeCar>
               </Box>
             </Tooltip>
-            <Menu
+            <CardStyle
               sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
@@ -196,14 +277,14 @@ export function Header() {
                 horizontal: "right",
               }}
               open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
+              onClose={handleCloseCarMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem key={setting} onClick={handleCloseCarMenu}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
-            </Menu>
+            </CardStyle>
             <Box>
               <IconButton sx={{ p: 0 }}>
                 <Avatar alt="Avatar" src={imgAvatar} />
@@ -212,6 +293,7 @@ export function Header() {
           </Box>
         </Toolbar>
       </Container>
+      <Divider  sx={{ display: { xs: "none", md: "flex" }}}/>
     </HeaderBar>
   );
 }

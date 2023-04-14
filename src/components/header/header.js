@@ -18,9 +18,9 @@ import Car from "../../images/icon-cart.svg";
 import CloseIcon from "../../images/icon-close.svg";
 import Badge from "@mui/material/Badge";
 import Divider from '@mui/material/Divider';
+import { CarMenu } from "./car/car";
 
 const pages = ["Collections", "Men", "Women", "About", "Contact"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const HeaderBar = styled(AppBar)`
   background-color: white;
@@ -125,10 +125,10 @@ const CardStyle = styled(Menu)`
   .css-1ka5eyc-MuiPaper-root-MuiMenu-paper-MuiPopover-paper {
     max-width: none;
     max-height: none;
-    width: 90%;
+    width: 95%;
 
     @media (min-width: 500px) {
-      width: 250px;
+      width: 320px;
       height: auto;
     }
   }
@@ -137,7 +137,7 @@ const BadgeCar = styled(Badge)`
  opacity: 1;
 `
 
-export function Header() {
+export function Header({valueTotal, setValueTotal, setValue}) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -248,7 +248,7 @@ export function Header() {
           </Box>
 
           <Box sx={{ flexGrow: 0, display: "flex"}}>
-            <Tooltip title="Open settings">
+            <Tooltip title="Open cart">
               <Box
                 sx={{
                   mr: 3,
@@ -258,7 +258,7 @@ export function Header() {
                 }}
                 onClick={handleOpenUserMenu}
               >
-                <BadgeCar badgeContent={0} color="primary" showZero>
+                <BadgeCar badgeContent={valueTotal} color="primary" showZero>
                   <img src={Car} alt="Shopping Car" />
                 </BadgeCar>
               </Box>
@@ -279,11 +279,7 @@ export function Header() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseCarMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseCarMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+             <CarMenu valueTotal={valueTotal} setValueTotal={setValueTotal} setValue={setValue}/>
             </CardStyle>
             <Box>
               <IconButton sx={{ p: 0 }}>

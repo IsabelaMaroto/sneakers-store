@@ -4,11 +4,12 @@ import { Paper, styled } from "@mui/material";
 import { images } from "./listImages";
 
 const PaperSlide = styled(Paper)`
+  height: 300px;
   box-shadow: unset;
   img {
-    height: 400px;
+    height: 100%;
     width: 100%;
-    object-fit: fill;
+    object-fit: cover;
   }
 `;
 export function CarouselImages(props) {

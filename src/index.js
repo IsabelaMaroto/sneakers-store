@@ -44,6 +44,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	font-family: 'Kumbh Sans';
 }
 
 article, aside, details, figcaption, figure, 
@@ -68,6 +69,19 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+button{
+        background-color: hsl(26, 100%, 55%);
+        color: hsl(0, 0%, 100%);
+        border: unset;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        padding: 10px;
+        border-radius: 8px;
+        font-size: 14px;
+    }
+
 `;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

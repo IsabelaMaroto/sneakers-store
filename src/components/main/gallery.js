@@ -7,6 +7,7 @@ import small2 from "../../images/image-product-2-thumbnail.jpg";
 import small3 from "../../images/image-product-3-thumbnail.jpg";
 import small4 from "../../images/image-product-4-thumbnail.jpg";
 
+
 const CarouselStyle = styled(Carousel)`
   flex-direction: column;
   border-radius: 50px;
@@ -36,6 +37,7 @@ const PaperSlide = styled(Paper)`
     height: 400px;
     width: 400px;
     border-radius: 20px;
+    cursor: pointer;
   }
 `;
 export function GalleryImages(props) {
@@ -45,6 +47,7 @@ export function GalleryImages(props) {
     <img src={small3} alt="sneaker"/>,
     <img src={small4} alt="sneaker"/>,
   ];
+
   return (
     <CarouselStyle
       id="carousel"
@@ -55,20 +58,23 @@ export function GalleryImages(props) {
           display: "none",
         },
       }}
+      navi
       sx={{ display: { xs: "none", md: "flex" } }}
       IndicatorIcon={indicators}
     >
       {images.map((item, i) => (
-        <Item key={i} item={item} />
+        <Item key={i} item={item} handle={props.handle}/>
       ))}
     </CarouselStyle>
   );
 }
 
 function Item(props) {
+
   return (
-    <PaperSlide>
-      <img src={props.item.image} alt="sneaker photos" />
+    <PaperSlide >
+      <img src={props.item.image} alt="sneaker photos" onClick={()=> props.handle()}/>
     </PaperSlide>
+    
   );
 }

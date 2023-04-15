@@ -4,6 +4,10 @@ import { Texts } from "./listTexts";
 import IconPlus from "../../images/icon-plus.svg";
 import IconMinus from "../../images/icon-minus.svg";
 import { GalleryImages } from "./gallery";
+import { useState } from "react";
+import { FullScreenGallery } from "./fullScreenGallery";
+
+
 
 const ContainerStyle = styled(Container)`
   padding: unset !important;
@@ -88,6 +92,7 @@ const BoxText = styled(Box)`
   }
 
   button {
+    width: 100%;
     svg {
       padding: 0 10px;
     }
@@ -117,6 +122,7 @@ const BoxText = styled(Box)`
       }
 
       button{
+        margin: 0 10px;
         width: 240px;
       }
     }
@@ -126,14 +132,22 @@ const GalleryBox = styled("div")`
   flex: 1;
   max-width: 500px;
 `;
-export function Main({ Plus, Minus, ProductData, value }) {
+export function Main({ Plus, Minus, ProductData, value}) {
+
+  const [openFullScreen, setOpenFullScreen] = useState(false);
+
+  function handleOpenFullScreen (){ setOpenFullScreen(true)};
+
+  function handleCloseFullScreen (){ setOpenFullScreen(false)};
+
   return (
     <ContainerStyle sx={{ display: { xs: "block", md: "flex" } }}>
       <CarouselImages />
       <GalleryBox>
-        <GalleryImages />
+        <GalleryImages handle={handleOpenFullScreen}/>
       </GalleryBox>
-      <BoxText>
+      {openFullScreen ? <FullScreenGallery handle={handleCloseFullScreen}/> : null}
+      <BoxText >
         {Texts.map((product, key) => (
           <div key={key}>
             <h3>{product.brand}</h3>

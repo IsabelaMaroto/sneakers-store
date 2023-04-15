@@ -3,6 +3,7 @@ import {Header} from './components/header/header';
 import { Main } from './components/main/mainContainer';
 import { useState } from "react";
 
+
 const Container = styled('div')`
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
@@ -15,6 +16,9 @@ function App() {
   const [value, setValue] = useState(0);
 
   const [valueTotal, setValueTotal] = useState(0);
+
+  
+ 
   
   function Plus(){
    setValue(value => value + 1)

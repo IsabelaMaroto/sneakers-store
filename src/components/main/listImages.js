@@ -5,15 +5,19 @@ import image4 from "../../images/image-product-4.jpg";
 
 export const images = [
     {
-        image: image1
+        image: image1,
+ 
     },
     {
-        image: image2
+        image: image2,
+ 
     },
     {
-        image: image3
+        image: image3,
+ 
     },
     {
-        image: image4
+        image: image4,
+
     },
 ]

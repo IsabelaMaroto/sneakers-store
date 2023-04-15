@@ -3,26 +3,25 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createGlobalStyle } from "styled-components";
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
-	typography: {
-	  allVariants: {
-		fontFamily: 'Kumbh Sans',
-		textTransform: 'none',
-		fontSize: 16,
-	  },
-	},
-	palette: {
-		primary: {
-		  light: 'hsl(26, 100%, 55%)',
-		  main: 'hsl(26, 100%, 55%)',
-		  dark: 'hsl(26, 100%, 55%)',
-		  contrastText: '#fff',
-		},
-	},
-  });
+  typography: {
+    allVariants: {
+      fontFamily: "Kumbh Sans",
+      textTransform: "none",
+      fontSize: 16,
+    },
+  },
+  palette: {
+    primary: {
+      light: "hsl(26, 100%, 55%)",
+      main: "hsl(26, 100%, 55%)",
+      dark: "hsl(26, 100%, 55%)",
+      contrastText: "#fff",
+    },
+  },
+});
 
 export const Global = createGlobalStyle`
 html, body, div, span, applet, object, iframe,
@@ -70,27 +69,31 @@ table {
 	border-spacing: 0;
 }
 button{
-        background-color: hsl(26, 100%, 55%);
-        color: hsl(0, 0%, 100%);
-        border: unset;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        padding: 10px;
-        border-radius: 8px;
-        font-size: 14px;
-    }
+	background-color: hsl(26, 100%, 55%);
+	color: hsl(0, 0%, 100%);
+	border: unset;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 700;
+	padding: 10px;
+	border-radius: 8px;
+	font-size: 14px;
+	cursor: pointer;
+}
+button:hover{
+	background-color: hsl(25, 100%, 94%);
+}
 
 `;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-	<ThemeProvider theme={theme}>
-    <App />
-	<Global/>
-	</ThemeProvider>
+    <ThemeProvider theme={theme}>
+      <App />
+      <Global />
+    </ThemeProvider>
   </React.StrictMode>
 );
 

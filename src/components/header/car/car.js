@@ -51,6 +51,9 @@ const BoxProduct = styled('div')`
       font-weight: 700;
     }
   }
+  .delete{
+    cursor: pointer;
+  }
 `
 export function CarMenu({ valueTotal, setValueTotal, setValue}) {
   const priceProduct = 125.00
@@ -77,14 +80,14 @@ export function CarMenu({ valueTotal, setValueTotal, setValue}) {
               <img src={ProductImage} alt="Product" />
             </div>
             <div className="productTexts">
-              <p >Fall Limited Edition Sneakers</p>
+              <p>Fall Limited Edition Sneakers</p>
               <div className="flex">
                 <p>$125.00</p>
                 <p>x {valueTotal}</p>
                 <p className="total">{total}</p>
               </div>
             </div>
-            <div onClick={() => Delete()}>
+            <div className="delete" onClick={() => Delete()}>
               <img src={ProductDelete} alt="delete icon" />
             </div>
           </BoxProduct>

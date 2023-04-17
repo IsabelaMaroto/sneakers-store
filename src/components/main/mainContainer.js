@@ -132,13 +132,24 @@ const GalleryBox = styled("div")`
   flex: 1;
   max-width: 500px;
 `;
-export function Main({ Plus, Minus, ProductData, value}) {
+export function Main({ProductData, value, setValue}) {
 
   const [openFullScreen, setOpenFullScreen] = useState(false);
 
-  function handleOpenFullScreen (){ setOpenFullScreen(true)};
+  function Plus(){
+    setValue(value => value + 1)
+   }
+   function Minus(){
+     if(value > 0){
+       setValue(value => value - 1)
+     }
+   }
+   console.log(value)
+ 
+  function handleOpenFullScreen (){setOpenFullScreen(true)};
 
   function handleCloseFullScreen (){ setOpenFullScreen(false)};
+  
 
   return (
     <ContainerStyle sx={{ display: { xs: "block", md: "flex" } }}>
@@ -171,7 +182,7 @@ export function Main({ Plus, Minus, ProductData, value}) {
               onClick={() => Minus()}
             />
 
-            <input type="number" value={value} min={0} id="product" />
+            <input type="number" min={0} id="product" onChange={e => setValue(e.target.value)}  value={value} disabled/>
             <img
               src={IconPlus}
               alt="Plus icon"

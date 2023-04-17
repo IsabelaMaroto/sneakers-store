@@ -84,7 +84,7 @@ export function CarMenu({ valueTotal, setValueTotal, setValue}) {
               <div className="flex">
                 <p>$125.00</p>
                 <p>x {valueTotal}</p>
-                <p className="total">{total}</p>
+                <p className="total">${total}</p>
               </div>
             </div>
             <div className="delete" onClick={() => Delete()}>

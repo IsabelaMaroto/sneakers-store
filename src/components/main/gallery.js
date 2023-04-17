@@ -47,7 +47,7 @@ export function GalleryImages(props) {
     <img src={small3} alt="sneaker"/>,
     <img src={small4} alt="sneaker"/>,
   ];
-
+  
   return (
     <CarouselStyle
       id="carousel"

@@ -3,6 +3,7 @@ import image2 from "../../images/image-product-2.jpg";
 import image3 from "../../images/image-product-3.jpg";
 import image4 from "../../images/image-product-4.jpg";
 
+
 export const images = [
     {
         image: image1,

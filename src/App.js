@@ -18,23 +18,13 @@ function App() {
   const [valueTotal, setValueTotal] = useState(0);
 
   
- 
-  
-  function Plus(){
-   setValue(value => value + 1)
-  }
-  function Minus(){
-    if(value > 0){
-      setValue(value => value - 1)
-    }
-  }
   function ProductData(){
     setValueTotal(value)
   }
   return (
     <Container className="App">
       <Header valueTotal={valueTotal} setValueTotal={setValueTotal} setValue={setValue}/>
-      <Main Minus={Minus} Plus={Plus} value={value} ProductData={ProductData}/>
+      <Main  value={value} ProductData={ProductData} setValue={setValue}/>
     </Container>
   );
 }

@@ -103,8 +103,9 @@ export function FullScreenGallery(props) {
         IndicatorIcon={indicators}
       >
         {images.map((item, i) => (
-          <Item key={i} item={item} />
+          <Item key={i} item={item} i={i}/>
         ))}
+        
       </CarouselStyle>
     </ContainerStyled>
   );
